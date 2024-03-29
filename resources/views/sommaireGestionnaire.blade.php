@@ -7,6 +7,7 @@
         </div>
         <ul id="menuList">
             <li >
+                <strong>Vous êtes gestionnaire</strong>
                 <strong>Bonjour {{ $gestionnaire['nom'] . ' ' . $gestionnaire['prenom'] }}</strong>
 
             </li>

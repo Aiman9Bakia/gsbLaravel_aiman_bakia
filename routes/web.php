@@ -92,3 +92,18 @@ Route::get('generationPdf',[
         'uses'=>'etatFraisController@creerPdf'
 ]);
 
+Route::get('listeFraisInvalide',[
+    'as'=>'listeInvalide',
+    'uses'=>'etatFraisController@listeInvalide'
+]);
+
+Route::get('form_validefrais',[
+    'as'=>'validFrais',
+    'uses'=>'etatFraisController@listeNom'
+]);
+
+Route::get('fraisliste',[
+    'as'=>'fraisliste',
+    'uses'=>'etatFraisController@listeFrais'
+]);
+

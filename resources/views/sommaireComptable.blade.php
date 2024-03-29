@@ -7,24 +7,22 @@
         </div>
         <ul id="menuList">
             <li >
+                <strong>Vous êtes comptable</strong>
                 <strong>Bonjour {{ $comptable['nom'] . ' ' . $comptable['prenom'] }}</strong>
 
             </li>
             <li class="smenu">
-                <a href="{{ route('chemin_gestionFrais')}}" title="Saisie fiche de frais ">Saisie fiche de frais</a>
+                <a href="{{ route('validFrais')}}" title="Saisie fiche de frais ">Valider les frais</a>
             </li>
             <li class="smenu">
-                <a href="{{ route('chemin_selectionMois') }}" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+                <a href="{{ route('fraisliste') }}" title="Consultation de mes fiches de frais">Liste des frais valides</a>
             </li>
-            <li class="smenu">
-                <a href="{{ route('chemin_test')}}" title="test">Test</a>
-            </li>
+
             <li class="smenu">
                 <a href="{{ route('chemin_deconnexion') }}" title="Se déconnecter">Déconnexion</a>
             </li>
-            <li class="smenu">
-                <a href="{{ route('listepersonne') }}" title="Se déconnecter">Liste des utilisateurs</a>
-            </li>
+
+
         </ul>
 
     </div>

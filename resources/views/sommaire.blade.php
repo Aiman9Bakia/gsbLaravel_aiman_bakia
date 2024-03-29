@@ -7,6 +7,7 @@
              </div>
                <ul id="menuList">
                    <li >
+                       <STRONG>vous êtes un visiteur lambda</STRONG>
                     <strong>Bonjour {{ $visiteur['nom'] . ' ' . $visiteur['prenom'] }}</strong>
 
                    </li>
@@ -16,15 +17,11 @@
                   <li class="smenu">
                     <a href="{{ route('chemin_selectionMois') }}" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
                   </li>
-                   <li class="smenu">
-                       <a href="{{ route('chemin_test')}}" title="test">Test</a>
-                   </li>
+
                <li class="smenu">
                 <a href="{{ route('chemin_deconnexion') }}" title="Se déconnecter">Déconnexion</a>
                   </li>
-                <li class="smenu">
-                  <a href="{{ route('listepersonne') }}" title="Se déconnecter">Liste des utilisateurs</a>
-                  </li>
+
                 </ul>
 
         </div>

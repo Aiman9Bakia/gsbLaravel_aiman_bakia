@@ -174,7 +174,12 @@ class PdoGsb{
 			$this->monPdo->exec($req);
 		 }
 	}
-
+public function listeUtiliateur(){
+    $req = "select nom from visiteur where type=2";
+    $res = $this->monPdo->query($req);
+    $lesLignes = $res->fetchAll();
+    return $lesLignes;
+}
 
 /**
  * Retourne les mois pour lesquel un visiteur a une fiche de frais
@@ -282,6 +287,27 @@ class PdoGsb{
 
     public function getComptable($login,$mdp){
         $req = "select * from visiteur where login='$login' and mdp='$mdp' and type=1";
+        $rs = $this->monPdo->query($req);
+        $ligne = $rs->fetch();
+        return $ligne;
+    }
+
+    public function listeInvalide(){
+        $req="SELECT * FROM `fichefrais` WHERE idEtat != 'RB' and idEtat !='CL';";
+        $rs = $this->monPdo->query($req);
+        $ligne = $rs->fetch();
+        return $ligne;
+    }
+
+    public function listeValide(){
+        $req="SELECT * FROM `fichefrais` WHERE idEtat = 'RB';";
+        $rs = $this->monPdo->query($req);
+        $ligne = $rs->fetch();
+        return $ligne;
+    }
+
+    public function  lesMois(){
+        $req="SELECT mois FROM `fichefrais`;";
         $rs = $this->monPdo->query($req);
         $ligne = $rs->fetch();
         return $ligne;
