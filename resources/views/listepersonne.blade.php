@@ -1,5 +1,5 @@
 
-@extends('sommaire')
+@extends('sommaireGestionnaire')
     @section('contenu1')
         <div class="container text-center contenu" id="contenu">
             <div class=" corpsForm row">
@@ -32,7 +32,7 @@
                         </tbody>
                         </table><hr>
                         <a href="{{Route('ajouteruser')}}" class="btn btn-secondary">Ajouter un utilisateur</a>
-                </div> 
-            </div>       
+                </div>
+            </div>
         </div>
     @endsection

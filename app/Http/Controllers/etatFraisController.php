@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use PdoGsb;
 use MyDate;
-use PDF;
 class etatFraisController extends Controller
 {
     function selectionnerMois()
@@ -260,14 +260,43 @@ class etatFraisController extends Controller
             $comptable = session('comptable');
             $visiteur = session('comptable');
             $listeFrais = PdoGsb::listeValide();
-            $lesMois=PdoGsb::lesMois();
+            $lesMois = PdoGsb::lesMois();
             dd($listeFrais);
             return view('listeFraiss')->with('comptable', $comptable)->with('visiteur', $visiteur)
                 ->with('liste', $listeFrais)
-
-                ->with('lesMois',$lesMois);
+                ->with('lesMois', $lesMois);
         } else {
             return view('connexion')->with('erreurs', null);
+        }
+    }
+
+    function genererEtat(Request $request)
+    {
+        $id = $request['id'];
+
+        $unVisiteur = PdoGsb::selectionneruser($id);
+        if (!empty($unVisiteur)) {
+            $nom = $unVisiteur[0]['nom'];
+            $prenom = $unVisiteur[0]['prenom'];
+            $id = $unVisiteur[0]['id'];
+            $adresse = $unVisiteur[0]['adresse'];
+            $cp = $unVisiteur[0]['cp'];
+            $ville = $unVisiteur[0]['ville'];
+            $dateEmbauche = $unVisiteur[0]['dateEmbauche'];
+
+            $pdf = PDF::LoadHTML(
+                "<ul>
+            <li>$nom</li>
+            <li>$prenom</li>
+            <li>$id</li>
+            <li>$adresse</li>
+            <li>$cp</li>
+            <li>$ville</li>
+            <li>$dateEmbauche</li>
+        </ul>"
+            );
+
+            return $pdf->download("bonjour.pdf");
         }
     }
 }
